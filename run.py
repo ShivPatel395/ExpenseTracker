@@ -1,3 +1,4 @@
+#Starts your Flask app
 from app import create_app
 
 # This gets the app object from our app folder

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_page.css') }}">
+
+    <script>
+        function goToRegisterPage(){
+            window.location.href = "{{ url_for('main.register') }}";
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <form class="loginForm" action="{{ url_for('main.login') }}" method="POST">
+            <label for="username" class="loginUsername">Username:</label>
+            <input required type="text" name="username" id="username">
+
+            <label for="password" class="loginPassword">Password:</label>
+            <input required type="password" name="password" id="password">
+            
+            {% if msg %}
+                <p class="{{ msg_type }}">{{ msg }}</p>
+            {% endif %}
+
+            <button type="submit" class="loginButton">Login</button>
+            <button onclick="goToRegisterPage()">← Register</button>        
+        </form>
+    </div>
+</body>
+</html>

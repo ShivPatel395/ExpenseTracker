@@ -2,10 +2,23 @@
 <html>
 <head>
     <title>Expense Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index_page.css') }}">
+
+    <script>
+        function goToLoginPage(){
+            window.location.href = "{{ url_for('main.login') }}";
+        }
+        function goToRegisterPage(){
+            window.location.href = "{{ url_for('main.register') }}";
+        }
+    </script>
+
 </head>
 <body>
-    <h1>Welcome to Expense Tracker!</h1>
-    <p>This is your first Flask app.</p>
+    <p>Welcome to the Expense Tracker</p>
+    <div class="signInButtons">
+        <button id="login_btn" onclick="goToLoginPage()">Login</button>
+        <button id="register_btn" onclick="goToRegisterPage()">Register</button>
+    </div>
 </body>
 </html>

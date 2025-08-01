@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app_home.css') }}">
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.spending-bar-inside, .saving-bar-inside').forEach(bar => {
+            // Force the browser to render the initial style (width: 0)
+            requestAnimationFrame(() => {
+                // Now trigger the transition
+                bar.style.width = bar.dataset.percent + '%';
+            });
+            });
+        });
+
+        function goToAddExpensePage(){
+            window.location.href = "{{ url_for('main.add_expense') }}";
+        }
+        function goToAddIncomePage(){
+            window.location.href = "{{ url_for('main.add_income') }}";
+        }
+        function goToGoalsPage(){
+            window.location.href = "{{ url_for('main.goals_page') }}";
+        }
+        function goToBudgetSheet(){
+            window.location.href = "{{ url_for('main.view_budget_sheet') }}";
+        }
+    </script>
+</head>
+<body>
+    <div class="topnav-wrapper">
+        <div class="topnav">
+            <div class="nav-left">
+                <h2>EXPENSE TRACKER</h2>
+            </div>
+            <div class="nav-right">
+                <a><button>Entries</button></a>
+                <a><button>Goals</button></a>
+                <a><button>Home</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spending-bar-container">
+        <p>
+            Spendings: <span class="current-spendings">$1000</span> out of a <span class="goal-spendings">$10,000</span> goal
+        </p>
+        <div class="spending-bar-frame">
+            <div class="spending-bar-inside" data-percent="10">
+            </div>
+        </div>
+    </div>
+
+    <div class="saving-bar-container">
+        <p>
+            Savings: <span class="current-savings">$10,000</span> out of a <span class="goal-savings">$1,000,000</span> goal
+        </p>
+        <div class="saving-bar-frame">
+            <div class="saving-bar-inside" data-percent="10">
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-actions-container">
+        <div class="quick-actions-border">
+            <h1> Quick Actions: </h1>
+            <div class="quick-actions">
+                <button onclick="goToAddExpensePage()">Add Expense</button>
+                <button onclick="goToAddIncomePage()">Add Income</button>
+                <button onclick="goToGoalsPage()">Add/View Goals</button>
+                <button onclick="goToBudgetSheet()">View Budget Sheet</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

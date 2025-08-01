@@ -1,3 +1,4 @@
+#Sets up your Flask app and brings everything together.
 from flask import Flask
 
 def create_app():

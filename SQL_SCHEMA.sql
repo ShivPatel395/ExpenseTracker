@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS UsersTable(
+    Username TEXT PRIMARY KEY NOT NULL UNIQUE,
+    Password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS FavoriteNumber(
+    Username TEXT PRIMARY KEY NOT NULL,
+    FavoriteNumber INTEGER NOT NULL
+);
